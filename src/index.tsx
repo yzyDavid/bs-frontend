@@ -1,5 +1,5 @@
 import dva, { connect } from 'dva';
-import { browserHistory, Router, Route, Switch } from 'dva/router';
+import { browserHistory, Router, Route, Switch, Redirect } from 'dva/router';
 import * as React from 'react';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
@@ -24,7 +24,8 @@ app.router(({ history }) => (
             <PublicHeader />
             <Content style={{ minHeight: '100%' }}>
                 <Switch>
-                    <Route path="/" exact component={LoginPage} />
+                    <Route path="/" exact render={() => <Redirect to="/login" />} />
+                    <Route path="/login" component={LoginPage} />
                 </Switch>
             </Content>
             <PublicFooter />
