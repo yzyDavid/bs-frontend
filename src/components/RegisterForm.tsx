@@ -27,7 +27,7 @@ export default class RegisterForm extends Component<FormProps, RegisterFormData>
                 return;
             }
             // TODO
-            this.props.dispatch({type:'login/login', payload: values});
+            this.props.dispatch({type:'register/register', payload: values});
         });
     };
 
