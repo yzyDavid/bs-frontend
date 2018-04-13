@@ -1,6 +1,8 @@
 const RegisterModel = {
     namespace: 'register',
-    effects: {}
+    state: {},
+    effects: {},
+    reducers: {}
 };
 
 export default RegisterModel;

@@ -86,6 +86,6 @@ export default class RegisterForm extends Component<FormProps, RegisterFormData>
     }
 }
 
-const WrappedRegisterForm = Form.create({})(RegisterForm);
+const WrappedRegisterForm: any = Form.create({})(RegisterForm);
 
 export {WrappedRegisterForm};

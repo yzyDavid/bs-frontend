@@ -1,3 +1,6 @@
 const isAuthed = () => true;
 
-export {isAuthed};
+// TODO
+const authFetch = () => { };
+
+export { isAuthed, authFetch };
