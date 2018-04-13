@@ -3,8 +3,9 @@ import { browserHistory, Router, Route, Switch, Redirect } from 'dva/router';
 import * as React from 'react';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
-import LoginModel from './models/login';
+import LoginModel from './models/LoginModel';
 import LoginPageComponent from './components/LoginPageComponent';
+import RegisterPageComponent from './components/RegisterPageComponent';
 import { PublicHeader, PublicFooter } from './components/PublicComponents';
 import { Layout } from 'antd';
 
@@ -17,6 +18,7 @@ const app = dva({
 app.model(LoginModel);
 
 const LoginPage = connect(state => { })(LoginPageComponent);
+const RegisterPage = connect(state => { })(RegisterPageComponent);
 
 app.router(({ history }) => (
     <Router history={history}>
@@ -26,6 +28,7 @@ app.router(({ history }) => (
                 <Switch>
                     <Route path="/" exact render={() => <Redirect to="/login" />} />
                     <Route path="/login" component={LoginPage} />
+                    <Route path="/register" component={RegisterPage} />
                 </Switch>
             </Content>
             <PublicFooter />
