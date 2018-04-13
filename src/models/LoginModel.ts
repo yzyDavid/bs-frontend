@@ -34,9 +34,11 @@ const LoginModel = {
             const body = JSON.parse(jsonBody);
             yield put({ type: 'updateSession', payload: { email: body.email, username: body.username, token: body.token } });
             message.success('登录成功');
+            yield put({ type: 'saveSession' });
             yield put(routerRedux.push('/dashboard'));
             return;
-        }
+        },
+        * logout() { }
     },
     reducers: {
         saveSession(state: LoginState): null {

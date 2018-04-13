@@ -26,7 +26,6 @@ export default class RegisterForm extends Component<FormProps, RegisterFormData>
                 message.error('信息填写不合法');
                 return;
             }
-            // TODO
             this.props.dispatch({type:'register/register', payload: values});
         });
     };

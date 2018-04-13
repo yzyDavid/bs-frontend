@@ -8,7 +8,7 @@ export default class RegisterPageComponent extends Component<any> {
     render() {
         return (
             <div>
-                <WrappedRegisterForm />
+                <WrappedRegisterForm dispatch={this.props.dispatch} />
             </div>
         );
     }
