@@ -25,7 +25,9 @@ app.model(DashboardModel);
 
 const LoginPage = connect(state => { return {}; })(LoginPageComponent);
 const RegisterPage = connect(state => { return {}; })(RegisterPageComponent);
-const DashboardPage = connect(state => { return {}; })(DashboardPageComponent);
+const DashboardPage = connect(state => { return {
+    ...state.dashboard
+}; })(DashboardPageComponent);
 
 app.router(({ history }) => (
     <Router history={history}>
