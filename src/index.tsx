@@ -35,7 +35,9 @@ const DashboardPage = connect(state => { return {
     ...state.dashboard
 }; })(DashboardPageComponent);
 const ManagementPage = connect(state => { return {}; })(ManagementPageComponent);
-const StudyPage = connect(state => {return {}; })(StudyPageComponent);
+const StudyPage = connect(state => {return {
+    ...state.study
+}; })(StudyPageComponent);
 
 app.router(({ history }) => (
     <Router history={history}>

@@ -19,10 +19,10 @@ export default class StudyPageComponent extends Component<any> {
                     </Col>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px', height: '100px' }}>
-                    <div style={{ fontSize: '36px', color: 'Navy' }}>Fuck</div>
+                    <div style={{ fontSize: '36px', color: 'Navy' }}>{this.props.word}</div>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px', minHeight: '400px' }}>
-                    <div style={{ fontSize: '18px', maxWidth: '450px' }}>here is the meaning of the word part.</div>
+                    <div style={{ fontSize: '18px', maxWidth: '450px' }}>{this.props.meaning}</div>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
                     <Button size="large" style={{ width: '300px' }} icon="frown">没记住</Button>
