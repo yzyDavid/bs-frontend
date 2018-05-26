@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { Layout, Row, Col, Button } from 'antd';
+import { Link } from 'dva/router';
 
 export default class DashboardPageComponent extends Component<any> {
     render() {
@@ -26,10 +27,14 @@ export default class DashboardPageComponent extends Component<any> {
                     <div style={{ textAlign: 'center' }}>学习进度</div>
                 </Row>
                 <Row type="flex" justify="center" style={{margin: '12px'}}>
-                    <Button size="large" style={{width: '300px'}}>管理词库</Button>
+                    <Link to="management">
+                        <Button size="large" style={{ width: '300px' }}>管理词库</Button>
+                    </Link>
                 </Row>
                 <Row type="flex" justify="center" style={{margin: '12px'}}>
-                    <Button size="large" type="primary" style={{width: '300px'}}>开始学习</Button>
+                    <Link to="study">
+                        <Button size="large" type="primary" style={{ width: '300px' }}>开始学习</Button>
+                    </Link>
                 </Row>
             </div>
         );
