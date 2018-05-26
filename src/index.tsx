@@ -23,9 +23,9 @@ app.model(LoginModel);
 app.model(RegisterModel);
 app.model(DashboardModel);
 
-const LoginPage = connect(state => { })(LoginPageComponent);
-const RegisterPage = connect(state => { })(RegisterPageComponent);
-const DashboardPage = connect(state => { })(DashboardPageComponent);
+const LoginPage = connect(state => { return {}; })(LoginPageComponent);
+const RegisterPage = connect(state => { return {}; })(RegisterPageComponent);
+const DashboardPage = connect(state => { return {}; })(DashboardPageComponent);
 
 app.router(({ history }) => (
     <Router history={history}>
