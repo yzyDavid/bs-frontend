@@ -1,9 +1,12 @@
 import { httpMethod } from '../types/httpMethods';
 import { getAuthTokenFromLocalStorage } from './localStorage';
-import { apiBaseUrl } from '../configs/config';
+import { apiBaseUrl, sessionStorageKey } from '../configs/config';
 
 // TODO
-const isAuthed = () => true;
+const isAuthed = () => {
+    const values = JSON.parse(localStorage.getItem(sessionStorageKey) || '{}');
+    return values.token !== '' && values.token !== null && values.token !== undefined;
+};
 
 const authFetch = (url: string, method: httpMethod, body: object | null): Promise<Response> => {
     const authToken = getAuthTokenFromLocalStorage();
