@@ -4,6 +4,11 @@ import { Row, Col, Button } from 'antd';
 import { Link } from 'dva/router';
 
 export default class StudyPageComponent extends Component<any> {
+    componentDidMount() {
+        this.props.dispatch({ type: 'study/getTodayWords' });
+        this.props.dispatch({ type: 'study/switchWord' });
+    }
+
     render() {
         return (
             <div>
