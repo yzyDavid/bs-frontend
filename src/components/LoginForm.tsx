@@ -62,7 +62,7 @@ export class LoginForm extends Component<FormProps, LoginFormData> {
                                 {required: true, message: '请输入密码'}
                             ]
                         })(
-                            <Input prefix={<Icon type="unlock" style={{fontSize: 13}}/>}/>
+                            <Input type="password" prefix={<Icon type="unlock" style={{fontSize: 13}}/>}/>
                         )
                     }
                 </FormItem>

@@ -1,6 +1,9 @@
 const ManagementModel = {
     namespace: 'management',
-    state: {}
+    state: {
+        myWords: [],
+        wordbooks: []
+    }
 };
 
 export default ManagementModel;
