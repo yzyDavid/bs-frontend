@@ -37,4 +37,4 @@ const authFetch = (url: string, method: httpMethod, body: object | null): Promis
     return fetch(apiBaseUrl + url, fetchBody);
 };
 
-export { isAuthed, authFetch };
+export { isAuthed, authFetch, checkAuthedOrLogout };

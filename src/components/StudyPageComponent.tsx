@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Row, Col, Button } from 'antd';
 import { Link } from 'dva/router';
+import { StudyState } from '../types/entities';
 
-export default class StudyPageComponent extends Component<any> {
+export default class StudyPageComponent extends Component<{dispatch: any} & StudyState> {
     componentDidMount() {
         this.props.dispatch({ type: 'study/getTodayWords' });
         this.props.dispatch({ type: 'study/switchWord' });
@@ -27,7 +28,7 @@ export default class StudyPageComponent extends Component<any> {
                     <div style={{ fontSize: '36px', color: 'Navy' }}>{this.props.word}</div>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px', minHeight: '400px' }}>
-                    <div style={{ fontSize: '18px', maxWidth: '450px' }}>{this.props.meaning}</div>
+                    <div style={{ fontSize: '18px', maxWidth: '450px' }}>{this.props.showMeaning ? this.props.meaning : ''}</div>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
                     <Button size="large" style={{ width: '300px' }} icon="frown">没记住</Button>
