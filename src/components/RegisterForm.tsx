@@ -44,7 +44,7 @@ export default class RegisterForm extends Component<FormProps, RegisterFormData>
         };
         return (
             <Form onSubmit={this.handleSubmit}>
-                <FormItem label="邮箱" {...formItemLayout} hasFeedback>
+                <FormItem label="邮箱" style={{ width: '800px' }} {...formItemLayout} hasFeedback>
                     {
                         getFieldDecorator('email', {
                             rules: [
@@ -78,7 +78,7 @@ export default class RegisterForm extends Component<FormProps, RegisterFormData>
                     }
                 </FormItem>
                 <FormItem {...formItemLayout}>
-                    <Button icon="copy" type="primary" htmlType="submit">注册</Button>
+                    <Button style={{ margin: '0 0 0 200px' }} icon="copy" type="primary" htmlType="submit">注册</Button>
                 </FormItem>
             </Form>
         );

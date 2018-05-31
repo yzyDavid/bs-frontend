@@ -21,7 +21,9 @@ export default class RegisterPageComponent extends Component<any> {
                     <Col span={1}>
                     </Col>
                 </Row>
-                <WrappedRegisterForm dispatch={this.props.dispatch} />
+                <Row type="flex" justify="center" style={{ margin: '12px' }}>
+                    <WrappedRegisterForm dispatch={this.props.dispatch} />
+                </Row>
             </div>
         );
     }

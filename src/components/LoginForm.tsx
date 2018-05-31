@@ -43,8 +43,8 @@ export class LoginForm extends Component<FormProps, LoginFormData> {
             },
         };
         return (
-            <Form onSubmit={this.handleSubmit}>
-                <FormItem label="邮箱" {...formItemLayout} hasFeedback>
+            <Form style={{ margin: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }} onSubmit={this.handleSubmit}>
+                <FormItem style={{ width: '600px' }} label="邮箱" {...formItemLayout} hasFeedback>
                     {
                         getFieldDecorator('email', {
                             rules: [
@@ -55,7 +55,7 @@ export class LoginForm extends Component<FormProps, LoginFormData> {
                         )
                     }
                 </FormItem>
-                <FormItem label="密码" {...formItemLayout} hasFeedback>
+                <FormItem style={{ width: '600px' }} label="密码" {...formItemLayout} hasFeedback>
                     {
                         getFieldDecorator('password', {
                             rules: [
@@ -66,8 +66,8 @@ export class LoginForm extends Component<FormProps, LoginFormData> {
                         )
                     }
                 </FormItem>
-                <FormItem {...formItemLayout}>
-                    <Button icon="copy" type="primary" htmlType="submit">登录</Button>
+                <FormItem {...formItemLayout} style={{ }}>
+                    <Button style={{ }} icon="copy" type="primary" htmlType="submit">登录</Button>
                 </FormItem>
             </Form>
         );
