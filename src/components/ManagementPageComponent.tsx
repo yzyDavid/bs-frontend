@@ -18,6 +18,12 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
             dataIndex: 'wordbookName'
         }];
 
+        const myWordColumns = [{
+            key: 'word',
+            title: '单词',
+            dataIndex: 'word'
+        }];
+
         return (
             <div>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
@@ -35,7 +41,7 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
                     <Col span={10}>
                         <Tabs defaultActiveKey="1">
                             <TabPane tab="我的单词" key="1">
-                                <Table>
+                                <Table dataSource={this.props.myWords} columns={myWordColumns} rowKey='word' >
                                 </Table>
                             </TabPane>
                             <TabPane tab="我的词书" key="2">

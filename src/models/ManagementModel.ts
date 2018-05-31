@@ -16,6 +16,8 @@ const ManagementModel = {
             const body = JSON.parse(bodyText);
             const { wordbooks } = body;
             yield put({type: 'setWordbooks', payload: wordbooks});
+        },
+        getWords(payload: undefined, { call, put }) {
         }
     },
     reducers: {
