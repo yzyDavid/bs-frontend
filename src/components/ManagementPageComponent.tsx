@@ -16,6 +16,20 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
             key: 'id',
             title: '单词书名称',
             dataIndex: 'wordbookName'
+        }, {
+            key: 'wordCount',
+            title: '单词数量',
+            dataIndex: 'wordCount'
+        }, {
+            key: 'ops',
+            title: '操作',
+            render: (text, record) => (
+                <span>
+                    <a href='#' onClick={() => {}} >加入学习</a>
+                    <span className='ant-divider' />
+                    <a href='#' onClick={() => {}} >全部移除</a>
+                </span>
+            )
         }];
 
         const myWordColumns = [{
