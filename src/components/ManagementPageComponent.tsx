@@ -2,11 +2,22 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Row, Col, Button, Table, Tabs } from 'antd';
 import { Link } from 'dva/router';
+import { ManagementState } from '../types/entities';
 
 const { TabPane } = Tabs;
 
-export default class ManagementPageComponent extends Component<any> {
+export default class ManagementPageComponent extends Component<{ dispatch: any } & ManagementState> {
+    componentDidMount() {
+        this.props.dispatch({ type: 'management/getWordbooks' });
+    }
+
     render() {
+        const wordbookColumns = [{
+            key: 'id',
+            title: '单词书名称',
+            dataIndex: 'wordbookName'
+        }];
+
         return (
             <div>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
@@ -21,18 +32,19 @@ export default class ManagementPageComponent extends Component<any> {
                     </Col>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
-                    <Tabs defaultActiveKey="1">
-                        <TabPane tab="我的单词" key="1">
-                            <Table>
-                            </Table>
-                        </TabPane>
-                        <TabPane tab="我的词书" key="2">
-                            <Table>
-                            </Table>
-                        </TabPane>
-                    </Tabs>
+                    <Col span={10}>
+                        <Tabs defaultActiveKey="1">
+                            <TabPane tab="我的单词" key="1">
+                                <Table>
+                                </Table>
+                            </TabPane>
+                            <TabPane tab="我的词书" key="2">
+                                <Table dataSource={this.props.wordbooks} columns={wordbookColumns} rowKey='id' >
+                                </Table>
+                            </TabPane>
+                        </Tabs>
+                    </Col>
                 </Row>
-                <div>ManagementPageComponent</div>
             </div>
         );
     }

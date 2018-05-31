@@ -34,7 +34,9 @@ const RegisterPage = connect(state => { return {}; })(RegisterPageComponent);
 const DashboardPage = connect(state => { return {
     ...state.dashboard
 }; })(DashboardPageComponent);
-const ManagementPage = connect(state => { return {}; })(ManagementPageComponent);
+const ManagementPage = connect(state => { return {
+    ...state.management
+}; })(ManagementPageComponent);
 const StudyPage = connect(state => {return {
     ...state.study
 }; })(StudyPageComponent);

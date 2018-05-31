@@ -83,6 +83,7 @@ const StudyModel = {
         },
         setTodays(state: StudyState, payload: {payload: Word[]}): StudyState {
             const wordsList = payload.payload.map(word => { return { ...word, remainTimes: 1 }; });
+            console.log(wordsList);
             return { ...state, todays: wordsList };
         },
         minusOne(state: StudyState): StudyState {
