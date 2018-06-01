@@ -8,7 +8,9 @@ const { TabPane } = Tabs;
 
 export default class ManagementPageComponent extends Component<{ dispatch: any } & ManagementState> {
     componentDidMount() {
+        this.props.dispatch({ type: 'management/setLoading' });
         this.props.dispatch({ type: 'management/getWordbooks' });
+        this.props.dispatch({ type: 'management/getWords' });
     }
 
     render() {
@@ -25,9 +27,14 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
             title: '操作',
             render: (text, record) => (
                 <span>
-                    <a href='#' onClick={() => {}} >加入学习</a>
+                    <a href='javascript:void(0);' onClick={() => {
+                        const { wordbookName } = record;
+                        this.props.dispatch({ type: 'management/addWordbookToStudy', payload: { wordbook: wordbookName } });
+                    }} >
+                        加入学习
+                    </a>
                     <span className='ant-divider' />
-                    <a href='#' onClick={() => {}} >全部移除</a>
+                    <a href='javascript:void(0);' onClick={() => {}} >全部移除</a>
                 </span>
             )
         }];
@@ -55,7 +62,7 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
                     <Col span={10}>
                         <Tabs defaultActiveKey="1">
                             <TabPane tab="我的单词" key="1">
-                                <Table dataSource={this.props.myWords} columns={myWordColumns} rowKey='word' >
+                                <Table dataSource={this.props.myWords} columns={myWordColumns} rowKey='word' loading={this.props.loading} >
                                 </Table>
                             </TabPane>
                             <TabPane tab="我的词书" key="2">
