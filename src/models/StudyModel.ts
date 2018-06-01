@@ -95,6 +95,9 @@ const StudyModel = {
             const modified = state.todays
                 .map(w => { return w.word === state.word ? { ...w, remainTimes: Math.max((w.remainTimes || 0) + 1, 0) } : w; });
             return { ...state, todays: modified };
+        },
+        toggleMeaning(state: StudyState): StudyState {
+            return { ...state, showMeaning: !state.showMeaning };
         }
     }
 };

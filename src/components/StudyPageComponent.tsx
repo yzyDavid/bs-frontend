@@ -22,6 +22,9 @@ export default class StudyPageComponent extends Component<{dispatch: any} & Stud
                     <Col span={8}>
                     </Col>
                     <Col span={1}>
+                        <Button icon="book" onClick={() => this.props.dispatch({ type: 'study/toggleMeaning' })} >
+                            {this.props.showMeaning ? '隐藏释义' : '显示释义'}
+                        </Button>
                     </Col>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px', height: '100px' }}>
