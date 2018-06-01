@@ -7,6 +7,7 @@ export interface Word {
 export interface StudyState extends Word {
     todays: Word[];
     showMeaning: boolean;
+    showModal: boolean;
 };
 
 export interface Wordbook {

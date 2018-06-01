@@ -1,5 +1,6 @@
 import { authFetch, checkAuthedOrLogout } from '../utils/auth';
 import { message } from 'antd';
+import { routerRedux } from 'dva/router';
 import { ManagementState, Wordbook, Word } from '../types/entities';
 
 const ManagementModel = {
@@ -32,6 +33,9 @@ const ManagementModel = {
             yield put({ type: 'setLoading' });
             yield put({ type: 'getWords' });
             yield put({ type: 'getWordbooks' });
+        },
+        * jumpToMe(payload: undefined, { put }) {
+            yield put(routerRedux.push('/management'));
         }
     },
     reducers: {

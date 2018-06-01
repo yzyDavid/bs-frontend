@@ -1,5 +1,5 @@
 import { authFetch, checkAuthedOrLogout } from '../utils/auth';
-import { message } from 'antd';
+import { message, Modal } from 'antd';
 import { routerRedux } from 'dva/router';
 import { StudyState, Word } from '../types/entities';
 
@@ -15,11 +15,12 @@ import { StudyState, Word } from '../types/entities';
 const StudyModel = {
     namespace: 'study',
     state: {
-        word: 'Fuck',
+        word: '<please wait...>',
         meaning: 'here is the meaning of the word above.',
         todays: [],
         showMeaning: false,
-        buttonEnabled: true  // TODO: binding this.
+        buttonEnabled: true,  // TODO: binding this.
+        showModal: false
     },
     effects: {
         * getTodayWords(payload: null | undefined, { call, put }) {
@@ -61,6 +62,10 @@ const StudyModel = {
             if (remains === 0) {
                 yield put({type: 'finishCurrentWord'});
             }
+            const wordsToGo = todays.filter(word => (word.remainTimes || 0) > 0);
+            if (wordsToGo.length == 0) {
+                yield put({ type: 'toggleModal' });
+            }
             yield put({type: 'switchWord'});
         },
         * forget(payload: null | undefined, { put }) {
@@ -100,6 +105,9 @@ const StudyModel = {
         },
         toggleMeaning(state: StudyState): StudyState {
             return { ...state, showMeaning: !state.showMeaning };
+        },
+        toggleModal(state: StudyState): StudyState {
+            return { ...state, showModal: !state.showModal };
         },
         printState(state): any {
             console.log(state);

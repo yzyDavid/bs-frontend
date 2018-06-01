@@ -1,13 +1,34 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Row, Col, Button } from 'antd';
-import { Link } from 'dva/router';
+import { Row, Col, Button, Modal } from 'antd';
+import { Link, Redirect } from 'dva/router';
 import { StudyState } from '../types/entities';
 
 export default class StudyPageComponent extends Component<{dispatch: any} & StudyState> {
     componentDidMount() {
         this.props.dispatch({ type: 'study/getTodayWords' });
         this.props.dispatch({ type: 'study/switchWord' });
+    }
+
+    onOk() {
+        this.props.dispatch({ type: 'study/toggleModal' });
+        this.props.dispatch({ type: 'study/getTodayWords' });
+    }
+
+    onCancel() {
+        this.props.dispatch({ type: 'study/toggleModal' });
+        this.props.dispatch({ type: 'dashboard/jumpToMe' });
+    }
+
+    renderModal() {
+        return (
+            <Modal title="Hooooray!" okText="再来一批" cancelText="看看进度"
+            visible={this.props.showModal} onOk={this.onOk.bind(this)} onCancel={this.onCancel.bind(this)} >
+                <p>
+                    本批次学习任务已完成，请选择继续学习下一批单词或者去查看我的学习进度。
+                </p>
+            </Modal>
+        );
     }
 
     render() {
@@ -43,6 +64,7 @@ export default class StudyPageComponent extends Component<{dispatch: any} & Stud
                         记住了
                     </Button>
                 </Row>
+                {this.renderModal()}
             </div>
         );
     }

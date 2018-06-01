@@ -12,7 +12,7 @@ Frontend
 
 For both frontend and backend.
 
-- [ ] FIX today words logic.
+- [X] FIX today words logic.
 
 - [ ] FEATURE more info and operations of word management tab.
 
@@ -21,3 +21,15 @@ For both frontend and backend.
 - [ ] FEATURE user custom words.
 
 - [ ] FIX auto refresh of management page.
+
+- [ ] FIX `can` issue.
+
+- [ ] FEATURE stats.
+
+- [ ] FEATURE dashboard, plan to study.
+
+- [ ] FEATURE switch word anime.
+
+- [ ] FEATURE server side everyman next day.
+
+- [ ] FEATURE Me next day for studying more.
