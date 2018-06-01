@@ -11,3 +11,13 @@ Frontend
 ## TODO List
 
 For both frontend and backend.
+
+- [ ] FIX today words logic.
+
+- [ ] FEATURE more info and operations of word management tab.
+
+- [ ] FEATURE remove word and wordbook logic.
+
+- [ ] FEATURE user custom words.
+
+- [ ] FIX auto refresh of management page.

@@ -22,7 +22,7 @@ export default class StudyPageComponent extends Component<{dispatch: any} & Stud
                     <Col span={8}>
                     </Col>
                     <Col span={1}>
-                        <Button icon="book" onClick={() => this.props.dispatch({ type: 'study/toggleMeaning' })} >
+                        <Button icon="book" onClick={() => this.props.dispatch({ type: 'study/printState' })} >
                             {this.props.showMeaning ? '隐藏释义' : '显示释义'}
                         </Button>
                     </Col>
@@ -34,10 +34,14 @@ export default class StudyPageComponent extends Component<{dispatch: any} & Stud
                     <div style={{ fontSize: '18px', maxWidth: '450px' }}>{this.props.showMeaning ? this.props.meaning : ''}</div>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
-                    <Button size="large" style={{ width: '300px' }} icon="frown">没记住</Button>
+                    <Button size="large" style={{ width: '300px' }} icon="frown" onClick={() => this.props.dispatch({ type: 'study/forget' })}>
+                        没记住
+                    </Button>
                 </Row>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
-                    <Button size="large" type="primary" style={{ width: '300px' }} icon="smile">记住了</Button>
+                    <Button size="large" type="primary" style={{ width: '300px' }} icon="smile" onClick={() => this.props.dispatch({ type: 'study/recall' })}>
+                        记住了
+                    </Button>
                 </Row>
             </div>
         );

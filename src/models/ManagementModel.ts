@@ -29,6 +29,7 @@ const ManagementModel = {
         * addWordbookToStudy(payload: { payload: { wordbook: string } }, { call, put }) {
             const response = yield call(authFetch, '/study/wordbook', 'PUT', payload.payload);
             yield checkAuthedOrLogout(response, put);
+            yield put({ type: 'setLoading' });
             yield put({ type: 'getWords' });
             yield put({ type: 'getWordbooks' });
         }

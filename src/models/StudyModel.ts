@@ -34,6 +34,7 @@ const StudyModel = {
 
             const { words } = body;
             yield put({ type: 'setTodays', payload: words });
+            yield put({type: 'switchWord'});
         },
         /**
          * network request only.
@@ -42,7 +43,7 @@ const StudyModel = {
          */
         * finishCurrentWord(payload: null | undefined, { call, put, select }) {
             const curWord = yield select(state => state.study.word);
-            const response = yield call(authFetch, '/study/finish_word', 'POST', { curWord });
+            const response = yield call(authFetch, '/study/finish_word', 'POST', { word: curWord });
             if (response.status !== 200) {
                 message.error(`发生错误，记录已学习单词 ${curWord} 状态失败`);
                 return;
@@ -68,12 +69,12 @@ const StudyModel = {
         }
     },
     reducers: {
-        switchWord(state: StudyState): StudyState | null {
+        switchWord(state: StudyState): StudyState {
             const words = state.todays.filter(word => (word.remainTimes || 0) > 0);
             const len = words.length;
             let idx: number = parseInt(<any>(Math.random() * len));
-            if (idx === 0) {
-                return null;
+            if (len === 0) {
+                return { ...state };
             }
             if (len > 1 && words[idx].word === state.word) {
                 idx = (idx + 1) % len;
@@ -84,6 +85,7 @@ const StudyModel = {
         setTodays(state: StudyState, payload: {payload: Word[]}): StudyState {
             const wordsList = payload.payload.map(word => { return { ...word, remainTimes: 1 }; });
             console.log(wordsList);
+            console.log(state);
             return { ...state, todays: wordsList };
         },
         minusOne(state: StudyState): StudyState {
@@ -98,6 +100,10 @@ const StudyModel = {
         },
         toggleMeaning(state: StudyState): StudyState {
             return { ...state, showMeaning: !state.showMeaning };
+        },
+        printState(state): any {
+            console.log(state);
+            return { ...state };
         }
     }
 };
