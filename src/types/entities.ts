@@ -20,3 +20,11 @@ export interface ManagementState {
     wordbooks: Wordbook[];
     loading: boolean;
 };
+
+export interface DashboardState {
+    recordDays: number;
+    totalToStudy: number;
+    totalStudied: number;
+    totalWords: number;
+    todayToStudy: number;
+}

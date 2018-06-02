@@ -2,8 +2,13 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Layout, Row, Col, Button } from 'antd';
 import { Link } from 'dva/router';
+import { DashboardState } from '../types/entities';
 
-export default class DashboardPageComponent extends Component<any> {
+export default class DashboardPageComponent extends Component<DashboardState & { dispatch: any }> {
+    componentDidMount() {
+        this.props.dispatch({ type: 'dashboard/getStats' });
+    }
+
     render() {
         return (
             <div style={{ margin: 'auto' }}>
@@ -21,6 +26,14 @@ export default class DashboardPageComponent extends Component<any> {
                     <Col style={{ margin: '0 30px' }}>
                         <div><span style={{ fontSize: '48px', color: 'Navy' }}>{this.props.totalStudied}</span>个</div>
                         <div style={{ textAlign: 'center' }}>总共已学</div>
+                    </Col>
+                    <Col style={{ margin: '0 30px' }}>
+                        <div><span style={{ fontSize: '48px', color: 'Navy' }}>{this.props.totalToStudy}</span>个</div>
+                        <div style={{ textAlign: 'center' }}>尚未完成</div>
+                    </Col>
+                    <Col style={{ margin: '0 30px' }}>
+                        <div><span style={{ fontSize: '48px', color: 'Navy' }}>{this.props.totalWords}</span>个</div>
+                        <div style={{ textAlign: 'center' }}>计划总数</div>
                     </Col>
                 </Row>
                 <Row>
