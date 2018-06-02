@@ -22,7 +22,7 @@ const DashboardModel = {
             const body = JSON.parse(bodyText);
             const updates: DashboardState = {
                 recordDays: 42,
-                todayToStudy: 42,
+                todayToStudy: body.todayToStudyWords,
                 totalStudied: body.studiedWords,
                 totalToStudy: body.toStudyWords,
                 totalWords: body.totalWords
