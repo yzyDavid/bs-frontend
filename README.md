@@ -22,14 +22,18 @@ For both frontend and backend.
 
 - [ ] FIX auto refresh of management page.
 
-- [ ] FIX `can` issue.
+- [X] FIX `can` issue.
 
-- [ ] FEATURE stats.
+- [X] FEATURE stats.
 
-- [ ] FEATURE dashboard, plan to study.
+- [X] FEATURE dashboard, plan to study.
 
 - [ ] FEATURE switch word anime.
 
 - [ ] FEATURE server side everyman next day.
 
 - [ ] FEATURE Me next day for studying more.
+
+- [ ] FEATURE fetch next day words.
+
+- [ ] FEATURE log for study days keeping. (DA KA)
