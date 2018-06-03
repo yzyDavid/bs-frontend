@@ -35,6 +35,9 @@ const StudyModel = {
 
             const { words } = body;
             yield put({ type: 'setTodays', payload: words });
+            if (words.length === 0) {
+                yield put({ type: 'toggleModal' });
+            }
             yield put({type: 'switchWord'});
         },
         /**
