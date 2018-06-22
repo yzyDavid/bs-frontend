@@ -21,7 +21,7 @@ const DashboardModel = {
             const bodyText = yield call(response.text.bind(response));
             const body = JSON.parse(bodyText);
             const updates: DashboardState = {
-                recordDays: 42,
+                recordDays: body.recordDays,
                 todayToStudy: body.todayToStudyWords,
                 totalStudied: body.studiedWords,
                 totalToStudy: body.toStudyWords,
