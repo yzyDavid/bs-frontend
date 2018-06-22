@@ -51,7 +51,7 @@ export class LoginForm extends Component<FormProps, LoginFormData> {
                                 {required: true, message: '请输入邮箱'}
                             ]
                         })(
-                            <Input prefix={<Icon type="user" style={{fontSize: 13}}/>}/>
+                            <Input autoComplete="username" prefix={<Icon type="user" style={{fontSize: 13}}/>}/>
                         )
                     }
                 </FormItem>
@@ -62,7 +62,7 @@ export class LoginForm extends Component<FormProps, LoginFormData> {
                                 {required: true, message: '请输入密码'}
                             ]
                         })(
-                            <Input type="password" prefix={<Icon type="unlock" style={{fontSize: 13}}/>}/>
+                            <Input type="password" autoComplete="current-password" prefix={<Icon type="unlock" style={{fontSize: 13}}/>}/>
                         )
                     }
                 </FormItem>
