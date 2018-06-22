@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Row, Col, Button, Table, Tabs } from 'antd';
+import { Row, Col, Button, Table, Tabs, Modal } from 'antd';
 import { Link } from 'dva/router';
 import { ManagementState } from '../types/entities';
 
@@ -12,6 +12,17 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
         this.props.dispatch({ type: 'management/getWordbooks' });
         this.props.dispatch({ type: 'management/getWords' });
         this.props.dispatch({ type: 'management/getCustomWords' });
+    }
+
+    renderAddWordDialog() {
+        return (
+            <Modal title="Hooooray!" okText="再来一批" cancelText="看看进度"
+            visible={this.props.showAddWordDialog} >
+                <p>
+                    TODO:
+                </p>
+            </Modal>
+        );
     }
 
     render() {
@@ -44,6 +55,14 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
             key: 'word',
             title: '单词',
             dataIndex: 'word'
+        }, {
+            key: 'ops',
+            title: '操作',
+            render: (text, record) => (
+                <span>
+                    <a href='javascript:void(0);' onClick={() => {}} >查看含义</a>
+                </span>
+            )
         }];
 
         const customWordColumns = [{
@@ -86,6 +105,7 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
                         </Tabs>
                     </Col>
                 </Row>
+                {this.renderAddWordDialog()}
             </div>
         );
     }

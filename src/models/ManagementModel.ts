@@ -9,7 +9,8 @@ const ManagementModel = {
         myWords: [],
         customWords: [],
         wordbooks: [],
-        loading: true
+        loading: true,
+        showAddWordDialog: false
     },
     effects: {
         * getWordbooks(payload: null | undefined, { call, put }) {

@@ -20,6 +20,7 @@ export interface ManagementState {
     customWords: any[];
     wordbooks: Wordbook[];
     loading: boolean;
+    showAddWordDialog: boolean;
 };
 
 export interface DashboardState {
