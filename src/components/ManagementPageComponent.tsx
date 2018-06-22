@@ -11,6 +11,7 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
         this.props.dispatch({ type: 'management/setLoading' });
         this.props.dispatch({ type: 'management/getWordbooks' });
         this.props.dispatch({ type: 'management/getWords' });
+        this.props.dispatch({ type: 'management/getCustomWords' });
     }
 
     render() {
@@ -45,6 +46,12 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
             dataIndex: 'word'
         }];
 
+        const customWordColumns = [{
+            key: 'word',
+            title: '单词',
+            dataIndex: 'word'
+        }];
+
         return (
             <div>
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
@@ -61,12 +68,19 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
                 <Row type="flex" justify="center" style={{ margin: '12px' }}>
                     <Col span={10}>
                         <Tabs defaultActiveKey="1">
-                            <TabPane tab="我的单词" key="1">
+                            <TabPane tab="我学习的单词" key="1">
                                 <Table dataSource={this.props.myWords} columns={myWordColumns} rowKey='word' loading={this.props.loading} >
                                 </Table>
                             </TabPane>
                             <TabPane tab="我的词书" key="2">
                                 <Table dataSource={this.props.wordbooks} columns={wordbookColumns} rowKey='id' >
+                                </Table>
+                            </TabPane>
+                            <TabPane tab="我的自定义单词" key="3">
+                                <div style={{padding: '12px'}} >
+                                    <Button type='primary' >添加单词</Button>
+                                </div>
+                                <Table dataSource={this.props.customWords} columns={customWordColumns} rowKey='word' >
                                 </Table>
                             </TabPane>
                         </Tabs>

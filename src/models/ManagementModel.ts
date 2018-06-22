@@ -7,6 +7,7 @@ const ManagementModel = {
     namespace: 'management',
     state: {
         myWords: [],
+        customWords: [],
         wordbooks: [],
         loading: true
     },
@@ -27,6 +28,14 @@ const ManagementModel = {
             const { words } = body;
             yield put({type: 'setWords', payload: words});
         },
+        * getCustomWords(payload: undefined, { call, put }) {
+            const response = yield call(authFetch, '/wordbook/words', 'POST', { wordbook: '' });
+            yield checkAuthedOrLogout(response, put);
+            const bodyText = yield call(response.text.bind(response));
+            const body = JSON.parse(bodyText);
+            const { words } = body;
+            yield put({type: 'setCustomWords', payload: words});
+        },
         * addWordbookToStudy(payload: { payload: { wordbook: string } }, { call, put }) {
             const response = yield call(authFetch, '/study/wordbook', 'PUT', payload.payload);
             yield checkAuthedOrLogout(response, put);
@@ -46,8 +55,10 @@ const ManagementModel = {
             return { ...state, wordbooks: payload.payload };
         },
         setWords(state: ManagementState, payload: {payload: Word[]}): ManagementState {
-            console.log(payload.payload);
             return { ...state, myWords: payload.payload, loading: false };
+        },
+        setCustomWords(state: ManagementState, payload: {payload: Word[]}): ManagementState {
+            return { ...state, customWords: payload.payload };
         },
         setLoading(state: ManagementState): ManagementState {
             return { ...state, loading: true };

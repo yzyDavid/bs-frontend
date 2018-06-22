@@ -17,6 +17,7 @@ export interface Wordbook {
 
 export interface ManagementState {
     myWords: any[];
+    customWords: any[];
     wordbooks: Wordbook[];
     loading: boolean;
 };
