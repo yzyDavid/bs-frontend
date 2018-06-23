@@ -68,12 +68,21 @@ const StudyModel = {
             const wordsToGo = todays.filter(word => (word.remainTimes || 0) > 0);
             if (wordsToGo.length == 0) {
                 yield put({ type: 'toggleModal' });
+                yield put({ type: 'finishToday' });
             }
             yield put({type: 'switchWord'});
         },
         * forget(payload: null | undefined, { put }) {
             yield put({type: 'plusOne'});
             yield put({type: 'switchWord'});
+        },
+        * finishToday(payload: null | undefined, { call, put }) {
+            const response = yield call(authFetch, '/study/today', 'POST');
+            if (response.status !== 200) {
+                message.error(`发生错误，记录今日打卡状态失败`);
+                return;
+            }
+            yield checkAuthedOrLogout(response, put);
         }
     },
     reducers: {
