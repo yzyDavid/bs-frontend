@@ -38,7 +38,11 @@ const StudyModel = {
             if (words.length === 0) {
                 yield put({ type: 'toggleModal' });
             }
-            yield put({type: 'switchWord'});
+            yield put({ type: 'switchWord' });
+        },
+        * fetchNextDay(payload: undefined, { call, put }) {
+            const response = yield call(authFetch, '/study/fetch_next_day', 'GET');
+            yield put({ type: 'getTodayWords' });
         },
         /**
          * network request only.

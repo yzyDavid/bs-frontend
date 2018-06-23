@@ -12,7 +12,7 @@ export default class StudyPageComponent extends Component<{dispatch: any} & Stud
 
     onOk() {
         this.props.dispatch({ type: 'study/toggleModal' });
-        this.props.dispatch({ type: 'study/getTodayWords' });
+        this.props.dispatch({ type: 'study/fetchNextDay' });
     }
 
     onCancel() {
@@ -43,7 +43,7 @@ export default class StudyPageComponent extends Component<{dispatch: any} & Stud
                     <Col span={8}>
                     </Col>
                     <Col span={1}>
-                        <Button icon="book" onClick={() => this.props.dispatch({ type: 'study/printState' })} >
+                        <Button icon="book" onClick={() => this.props.dispatch({ type: 'study/toggleMeaning' })} >
                             {this.props.showMeaning ? '隐藏释义' : '显示释义'}
                         </Button>
                     </Col>
