@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import * as React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Button } from 'antd';
 import DvaProps from '../types/DvaProps';
 
 const { Header, Footer } = Layout;

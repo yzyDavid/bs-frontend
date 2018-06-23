@@ -1,4 +1,4 @@
-import { sessionStorageKey } from '../configs/config';
+import { sessionStorageKey, devKey } from '../configs/config';
 import { LoginFormData } from '../components/LoginForm';
 import { authFetch } from '../utils/auth';
 import { message } from 'antd';
@@ -38,7 +38,11 @@ const LoginModel = {
             yield put(routerRedux.push('/dashboard'));
             return;
         },
-        * logout() { }
+        * logout() { },
+        * plusOneDay(payload: undefined, { call }) {
+            const res = yield call(authFetch, '/dev/plus_one_day?key=' + devKey, 'GET');
+            console.log(res);
+        }
     },
     reducers: {
         saveSession(state: LoginState): null {

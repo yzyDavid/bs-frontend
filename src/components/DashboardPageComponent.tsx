@@ -48,6 +48,7 @@ export default class DashboardPageComponent extends Component<DashboardState & {
                     <Link to="study">
                         <Button size="large" type="primary" style={{ width: '300px' }}>开始学习</Button>
                     </Link>
+                    <Button onClick={() => this.props.dispatch({ type: 'login/plusOneDay' })} >+1</Button>
                 </Row>
             </div>
         );

@@ -46,9 +46,6 @@ const ManagementModel = {
         },
         * jumpToMe(payload: undefined, { put }) {
             yield put(routerRedux.push('/management'));
-        },
-        * plusOneDay(payload: undefined, { call }) {
-            // TODO: debug only interface.
         }
     },
     reducers: {

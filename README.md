@@ -36,4 +36,4 @@ For both frontend and backend.
 
 - [ ] FEATURE fetch next day words.
 
-- [ ] FEATURE log for study days keeping. (DA KA)
+- [X] FEATURE log for study days keeping. (DA KA)
