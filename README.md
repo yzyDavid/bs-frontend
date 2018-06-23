@@ -32,8 +32,8 @@ For both frontend and backend.
 
 - [ ] FEATURE server side everyman next day.
 
-- [ ] FEATURE Me next day for studying more.
+- [X] FEATURE Me next day for studying more.
 
-- [ ] FEATURE fetch next day words.
+- [X] FEATURE fetch next day words.
 
 - [X] FEATURE log for study days keeping. (DA KA)

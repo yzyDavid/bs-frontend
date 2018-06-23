@@ -40,9 +40,13 @@ const StudyModel = {
             }
             yield put({ type: 'switchWord' });
         },
-        * fetchNextDay(payload: undefined, { call, put }) {
-            const response = yield call(authFetch, '/study/fetch_next_day', 'GET');
+        * fetchNextDay(payload: undefined, { call, put, select }) {
             yield put({ type: 'getTodayWords' });
+            const words = yield select(state => state.study.todays);
+            if (words.length === 0) {
+                const response = yield call(authFetch, '/study/fetch_next_day', 'GET');
+                yield put({ type: 'getTodayWords' });
+            }
         },
         /**
          * network request only.
