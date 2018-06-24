@@ -18,7 +18,7 @@ For both frontend and backend.
 
 - [ ] FEATURE remove word and wordbook logic.
 
-- [ ] FEATURE user custom words.
+- [X] FEATURE user custom words.
 
 - [ ] FIX auto refresh of management page.
 
@@ -37,3 +37,5 @@ For both frontend and backend.
 - [X] FEATURE fetch next day words.
 
 - [X] FEATURE log for study days keeping. (DA KA)
+
+- [ ] FEATURE logout.
