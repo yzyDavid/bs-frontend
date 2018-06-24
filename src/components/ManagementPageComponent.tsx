@@ -60,7 +60,19 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
             title: '操作',
             render: (text, record) => (
                 <span>
-                    <a href='javascript:void(0);' onClick={() => {}} >查看含义</a>
+                    <a href='javascript:void(0);' onClick={() => {
+                        Modal.info({
+                            title: '单词含义',
+                            content: (
+                                <div>
+                                    <h3>{record.word}</h3>
+                                    <span>{record.meaning}</span>
+                                </div>
+                            )
+                        });
+                        console.log(text);
+                        console.log(record);
+                    }} >查看含义</a>
                 </span>
             )
         }];
