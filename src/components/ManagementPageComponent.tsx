@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Row, Col, Button, Table, Tabs, Modal } from 'antd';
+import { Row, Col, Button, Table, Tabs, Modal, Input } from 'antd';
 import { Link } from 'dva/router';
 import { ManagementState } from '../types/entities';
+import { WrappedAddWordForm } from './AddWordForm';
 
 const { TabPane } = Tabs;
 
@@ -16,11 +17,12 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
 
     renderAddWordDialog() {
         return (
-            <Modal title="Hooooray!" okText="再来一批" cancelText="看看进度"
-            visible={this.props.showAddWordDialog} >
-                <p>
-                    TODO:
-                </p>
+            <Modal title="Hooooray!" okText="添加" cancelText="取消" footer={<div/>}
+                visible={this.props.showAddWordDialog} onCancel={() => this.props.dispatch({ type: 'management/toggleAddWordDialog' })} >
+                <div>
+                    <h2>添加单词</h2>
+                    <WrappedAddWordForm dispatch={this.props.dispatch} />
+                </div>
             </Modal>
         );
     }
@@ -109,7 +111,7 @@ export default class ManagementPageComponent extends Component<{ dispatch: any }
                             </TabPane>
                             <TabPane tab="我的自定义单词" key="3">
                                 <div style={{padding: '12px'}} >
-                                    <Button type='primary' >添加单词</Button>
+                                    <Button type='primary' onClick={() => this.props.dispatch({type: 'management/toggleAddWordDialog'})} >添加单词</Button>
                                 </div>
                                 <Table dataSource={this.props.customWords} columns={customWordColumns} rowKey='word' >
                                 </Table>

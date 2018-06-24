@@ -44,6 +44,15 @@ const ManagementModel = {
             yield put({ type: 'getWords' });
             yield put({ type: 'getWordbooks' });
         },
+        * addWordToCustomWordbook(payload: { payload: { word: string, meaning: string } }, { call, put }) {
+            const response = yield call(authFetch, '/word', 'PUT', { ...payload.payload, wordbooks: [] });
+            console.log(response);
+            yield checkAuthedOrLogout(response, put);
+            if (response.status === 400) {
+                message.error('添加失败！可能此单词已经存在！');
+            }
+            yield put({ type: 'getCustomWords' });
+        },
         * jumpToMe(payload: undefined, { put }) {
             yield put(routerRedux.push('/management'));
         }
@@ -60,6 +69,9 @@ const ManagementModel = {
         },
         setLoading(state: ManagementState): ManagementState {
             return { ...state, loading: true };
+        },
+        toggleAddWordDialog(state: ManagementState): ManagementState {
+            return { ...state, showAddWordDialog: !state.showAddWordDialog };
         }
     }
 };
